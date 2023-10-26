@@ -1,4 +1,4 @@
-module github.com/azure-buildpacks/mslibpak
+module github.com/Azure/mslibpak
 
 go 1.20
 

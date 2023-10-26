@@ -17,7 +17,7 @@
 package mslibpak
 
 import (
-	"github.com/azure-buildpacks/mslibpak/internal"
+	"github.com/Azure/mslibpak/internal"
 	"github.com/buildpacks/libcnb"
 )
 
