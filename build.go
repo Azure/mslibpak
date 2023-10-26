@@ -18,8 +18,6 @@ package mslibpak
 
 import (
 	"github.com/buildpacks/libcnb"
-
-	"github.com/paketo-buildpacks/libpak/bard"
 )
 
 type buildDelegate struct {
@@ -27,14 +25,8 @@ type buildDelegate struct {
 }
 
 func (b buildDelegate) Build(context libcnb.BuildContext) (libcnb.BuildResult, error) {
+	// start log here
 	result, err := b.delegate.Build(context)
-	if err != nil {
-		err = bard.IdentifiableError{
-			Name:        context.Buildpack.Info.Name,
-			Description: context.Buildpack.Info.Version,
-			Err:         err,
-		}
-	}
-
+	// end log here
 	return result, err
 }

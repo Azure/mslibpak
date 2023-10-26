@@ -18,8 +18,6 @@ package mslibpak
 
 import (
 	"github.com/buildpacks/libcnb"
-
-	"github.com/paketo-buildpacks/libpak/bard"
 )
 
 type detectDelegate struct {
@@ -27,14 +25,8 @@ type detectDelegate struct {
 }
 
 func (d detectDelegate) Detect(context libcnb.DetectContext) (libcnb.DetectResult, error) {
+	//start log here
 	result, err := d.delegate.Detect(context)
-	if err != nil {
-		err = bard.IdentifiableError{
-			Name:        context.Buildpack.Info.Name,
-			Description: context.Buildpack.Info.Version,
-			Err:         err,
-		}
-	}
-
+	// end log here
 	return result, err
 }

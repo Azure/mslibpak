@@ -17,15 +17,11 @@
 package mslibpak
 
 import (
-	"github.com/Azure/mslibpak/internal"
 	"github.com/buildpacks/libcnb"
+	"github.com/paketo-buildpacks/libpak"
 )
 
 // Main is called by the main function of a buildpack, encapsulating both detection and build in the same binary.
 func Main(detector libcnb.Detector, builder libcnb.Builder, options ...libcnb.Option) {
-	libcnb.Main(detectDelegate{delegate: detector}, buildDelegate{delegate: builder},
-		append([]libcnb.Option{
-			libcnb.WithExitHandler(internal.NewExitHandler()),
-		}, options...)...,
-	)
+	libpak.Main(detectDelegate{delegate: detector}, buildDelegate{delegate: builder}, options...)
 }
